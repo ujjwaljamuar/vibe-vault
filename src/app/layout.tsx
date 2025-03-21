@@ -26,8 +26,10 @@ export default function RootLayout({
         <html lang="en">
             <body
                 style={{
-                    height: "99dvh",
-                    width: "98dvw",
+                    minHeight: "100dvh",
+                    width: "100dvw",
+                    margin: "0",
+                    overflow: "hidden",
                     border: "1px solid black",
                     display: "flex",
                     flexDirection: "column",

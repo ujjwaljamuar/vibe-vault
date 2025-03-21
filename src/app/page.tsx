@@ -6,14 +6,15 @@ export default function Home() {
         <div
             style={{
                 height: "75dvh",
-                width: "95dvw",
+                width: "85dvw",
                 // margin: 0,
-                display: "flex",
-                flexDirection: "column",
-                justifyContent: "center",
+                // display: "flex",
+                // flexDirection: "column",
+                // justifyContent: "center",
                 alignItems: "center",
                 alignContent: "center",
                 backgroundColor: "#f5f5f5",
+                borderRadius: "10px",
                 border: "1px solid green",
                 overflow: "hidden"
             }}

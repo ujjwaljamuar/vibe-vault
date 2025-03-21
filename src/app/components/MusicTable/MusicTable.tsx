@@ -4,35 +4,53 @@ import Image from "next/image";
 import "./MusicTable.css";
 
 const MusicTable = () => {
+    const sessionStoragekeys = {
+        PlayList: "musicItems",
+    };
     const [musicItems, setMusicItems] = useState([]);
 
     useEffect(() => {
-        fetch("https://ujjwaljamuar.github.io/JSONsAPIs/All_Liked_Songs.json")
-            .then((response) => response.json())
-            .then((data) => setMusicItems(data["items"]))
-            .catch((error) =>
-                console.log(`Error fetching music API.\n ${error}`)
-            );
-    });
+        const cachedItems = sessionStorage.getItem(
+            sessionStoragekeys["PlayList"]
+        );
+
+        if (cachedItems) {
+            console.log("Found data in session storage");
+            setMusicItems(JSON.parse(cachedItems));
+        } else {
+            console.log("Data not found in session storage");
+            fetch(
+                "https://ujjwaljamuar.github.io/JSONsAPIs/All_Liked_Songs.json"
+            )
+                .then((response) => response.json())
+                .then((data) => {
+                    setMusicItems(data["items"]);
+                    sessionStorage.setItem(
+                        sessionStoragekeys["PlayList"],
+                        JSON.stringify(data["items"])
+                    );
+                })
+                .catch((error) =>
+                    console.log(`Error fetching music API.\n ${error}`)
+                );
+        }
+    }, []);
 
     return (
         <div
             className="maintable"
             style={{
                 height: "100%",
-                width: "95dvw",
+                // width: "95dvw",
                 display: "flex",
                 flexDirection: "column",
-                justifyContent: "center",
+                // justifyContent: "center",
                 // alignItems: "center",
-                alignContent: "center",
-                // margin: "20px",
-                // padding: "20px",
-
-                border: "1px solid purple",
+                // alignContent: "center",
+                border: "1px solid red",
             }}
         >
-            <div>
+            <div style={{ height: "10%", border: "1px solid pink" }}>
                 <input
                     type="search"
                     style={{
@@ -48,14 +66,22 @@ const MusicTable = () => {
                 style={{
                     overflowX: "auto",
                     overflowY: "scroll",
-                    height: "100%",
-                    width: "90dvw",
-                    display: "flex",
-                    alignItems: "center"
+                    height: "90%",
+                    width: "100%",
+                    // display: "flex",
+                    // alignItems: "center",
                 }}
             >
-                <table>
-                    <thead>
+                <table style={{ borderCollapse: "collapse" }}>
+                    <thead
+                        style={{
+                            position: "sticky",
+                            top: "0",
+                            zIndex: "100",
+                            backgroundColor: "#F3F3F3",
+                            // border: "5px solid red",
+                        }}
+                    >
                         <tr>
                             <th>Cover</th>
                             <th>Title</th>

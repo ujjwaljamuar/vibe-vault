@@ -4,6 +4,7 @@
     border: 1px;
 } */
 
-td {
+th, td {
     text-align: center;
+    border: 1px solid purple;
 }
