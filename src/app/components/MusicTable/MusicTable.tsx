@@ -56,11 +56,26 @@ const MusicTable = () => {
                     style={{
                         width: "60%",
                         border: "1px solid black",
-                        marginTop: "2px",
-                        marginBottom: "5px",
-                        padding: "10px",
+                        margin: ".2em",
+                        // marginTop: "2px",
+                        // marginBottom: "5px",
+                        padding: ".6em",
+                        borderRadius: "5px"
                     }}
                 ></input>
+                <button
+                    style={{
+                        border: "2px solid grey",
+                        padding: ".5em",
+                        backgroundColor: "#EDF2F7",
+                        borderRadius: "5px",
+                        fontWeight: "bold",
+                        cursor: "pointer"
+                    }}
+                    // className="btn-98"
+                >
+                    Search
+                </button>
             </div>
             <div
                 style={{
@@ -80,6 +95,7 @@ const MusicTable = () => {
                             zIndex: "100",
                             backgroundColor: "#F3F3F3",
                             // border: "5px solid red",
+                            height: "5vh"
                         }}
                     >
                         <tr>
@@ -88,6 +104,7 @@ const MusicTable = () => {
                             <th>Artist</th>
                             <th>Album</th>
                             <th>Duration</th>
+                            {/* <th>Play</th> */}
                         </tr>
                     </thead>
                     <tbody>
@@ -104,7 +121,7 @@ const MusicTable = () => {
                                         }}
                                     />
                                 </td>
-                                <td className="tabledata">{item["title"]}</td>
+                                <td className="tabledata" style={{ }}>{item["title"]}</td>
                                 <td className="tabledata">{item["artist"]}</td>
                                 <td className="tabledata">{item["album"]}</td>
                                 <td className="tabledata">
