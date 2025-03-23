@@ -1,6 +1,9 @@
 "use client";
 import { useEffect, useState } from "react";
 import Image from "next/image";
+import { FiSearch } from "react-icons/fi";
+import { FaFilter } from "react-icons/fa";
+
 import "./MusicTable.css";
 
 const MusicTable = () => {
@@ -34,6 +37,7 @@ const MusicTable = () => {
                     console.log(`Error fetching music API.\n ${error}`)
                 );
         }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     return (
@@ -50,32 +54,62 @@ const MusicTable = () => {
                 border: "1px solid red",
             }}
         >
-            <div style={{ height: "10%", border: "1px solid pink" }}>
-                <input
-                    type="search"
+            <div
+                style={{
+                    height: "10%",
+                    border: "1px solid pink",
+                    display: "flex",
+                    alignItems: "center",
+                    gap: "0.1em",
+                    padding: "0.3em",
+                    backgroundColor: "white",
+                    justifyContent: "space-between"
+                }}
+            >
+                <div
                     style={{
-                        width: "60%",
-                        border: "1px solid black",
-                        margin: ".2em",
-                        // marginTop: "2px",
-                        // marginBottom: "5px",
-                        padding: ".6em",
-                        borderRadius: "5px"
+                        height: "95%",
+                        border: "1px solid pink",
+                        display: "flex",
+                        alignItems: "center",
+                        gap: "0.1em",
+                        padding: "0.3em",
+                        backgroundColor: "white",
                     }}
-                ></input>
-                <button
-                    style={{
-                        border: "2px solid grey",
-                        padding: ".5em",
-                        backgroundColor: "#EDF2F7",
-                        borderRadius: "5px",
-                        fontWeight: "bold",
-                        cursor: "pointer"
-                    }}
-                    // className="btn-98"
                 >
-                    Search
-                </button>
+                    <input
+                        type="search"
+                        style={{
+                            width: "60%",
+                            height: "100%",
+                            border: "2px solid black",
+                            margin: ".2em",
+                            // marginTop: "2px",
+                            // marginBottom: "5px",
+                            padding: "1rem",
+                            borderRadius: "5px",
+                            backgroundColor: "#F3F3F3",
+                        }}
+                    ></input>
+                    <button
+                        style={{
+                            width: "3%",
+                            height: "100%",
+                            border: "2px solid grey",
+                            padding: ".5em",
+                            backgroundColor: "white",
+                            borderRadius: "5px",
+                            fontWeight: "bold",
+                            cursor: "pointer",
+                        }}
+                        // className="btn-98"
+                    >
+                        <FiSearch />
+                    </button>
+                </div>
+                <div>
+                    <FaFilter />
+                </div>
             </div>
             <div
                 style={{
@@ -93,9 +127,9 @@ const MusicTable = () => {
                             position: "sticky",
                             top: "0",
                             zIndex: "100",
-                            backgroundColor: "#F3F3F3",
+                            backgroundColor: "white",
                             // border: "5px solid red",
-                            height: "5vh"
+                            height: "5vh",
                         }}
                     >
                         <tr>
@@ -121,7 +155,9 @@ const MusicTable = () => {
                                         }}
                                     />
                                 </td>
-                                <td className="tabledata" style={{ }}>{item["title"]}</td>
+                                <td className="tabledata" style={{}}>
+                                    {item["title"]}
+                                </td>
                                 <td className="tabledata">{item["artist"]}</td>
                                 <td className="tabledata">{item["album"]}</td>
                                 <td className="tabledata">

@@ -4,7 +4,13 @@
     border: 1px;
 } */
 
-th, td {
+td {
     text-align: center;
     border: 1px solid purple;
+}
+
+thead > tr > th {
+    background-color: #e5e4e4;
+    margin: 2px;
+    border-radius: 2px;
 }
